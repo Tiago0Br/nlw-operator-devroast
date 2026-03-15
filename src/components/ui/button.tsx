@@ -7,15 +7,16 @@ const button = tv({
     'font-mono text-sm font-medium',
     'transition-opacity duration-150',
     'disabled:opacity-40 disabled:pointer-events-none',
-    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10B981] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]'
+    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-green focus-visible:ring-offset-2 focus-visible:ring-offset-bg-page'
   ],
   variants: {
     variant: {
-      primary: 'bg-[#10B981] text-[#0A0A0A] hover:opacity-90 active:opacity-80',
+      primary:
+        'bg-accent-green text-bg-page hover:opacity-90 active:opacity-80',
       secondary:
-        'bg-transparent text-[#FAFAFA] border border-[#2A2A2A] hover:border-[#3A3A3A] hover:bg-[#1A1A1A] active:opacity-80',
+        'bg-transparent text-text-primary border border-border-primary hover:border-border-hover hover:bg-bg-elevated active:opacity-80',
       ghost:
-        'bg-transparent text-[#6B7280] border border-[#2A2A2A] hover:text-[#FAFAFA] hover:border-[#3A3A3A] active:opacity-80'
+        'bg-transparent text-text-secondary border border-border-primary hover:text-text-primary hover:border-border-hover active:opacity-80'
     },
     size: {
       sm: 'px-3 py-1.5 text-xs',
