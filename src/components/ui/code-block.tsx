@@ -1,5 +1,6 @@
 import type { BundledLanguage } from 'shiki'
 import { codeToHtml } from 'shiki'
+import { twMerge } from 'tailwind-merge'
 
 type CodeBlockProps = {
   code: string
@@ -23,7 +24,10 @@ export async function CodeBlock({
 
   return (
     <div
-      className={`font-mono border border-border-primary overflow-hidden ${className ?? ''}`}
+      className={twMerge(
+        'font-mono border border-border-primary overflow-hidden',
+        className
+      )}
       style={{ background: '#101010' }}
     >
       {/* Header */}

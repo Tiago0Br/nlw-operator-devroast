@@ -1,7 +1,10 @@
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
 import { CodeBlock } from '@/components/ui/code-block'
 import { DiffLine } from '@/components/ui/diff-line'
+import { ScoreRing } from '@/components/ui/score-ring'
+import { TableRow } from '@/components/ui/table-row'
 import { Toggle } from '@/components/ui/toggle'
 
 export default function ComponentsPage() {
@@ -219,6 +222,79 @@ async function getUser(id: string): Promise<User> {
           <DiffLine variant="context" code="    total += items[i].price" />
           <DiffLine variant="context" code="  }" />
           <DiffLine variant="context" code="}" />
+        </div>
+      </section>
+
+      {/* Cards */}
+      <section className="flex flex-col gap-8 w-full max-w-2xl">
+        <h2 className="font-mono text-accent-green text-xs font-bold">
+          {'// cards'}
+        </h2>
+
+        <div className="flex flex-col gap-4">
+          <Card
+            variant="critical"
+            label="critical"
+            title="using var instead of const/let"
+            description="the var keyword is function-scoped rather than block-scoped, which can lead to unexpected behavior and bugs."
+          />
+          <Card
+            variant="warning"
+            label="warning"
+            title="missing error handling in async function"
+            description="async functions should always handle rejections to prevent unhandled promise exceptions."
+          />
+          <Card
+            variant="good"
+            label="good"
+            title="proper use of const for immutable bindings"
+            description="using const correctly signals intent and prevents accidental reassignment."
+          />
+        </div>
+      </section>
+
+      {/* TableRow */}
+      <section className="flex flex-col gap-8 w-full max-w-2xl">
+        <h2 className="font-mono text-accent-green text-xs font-bold">
+          {'// table_row'}
+        </h2>
+
+        <div className="flex flex-col w-full">
+          <TableRow
+            variant="critical"
+            rank="#1"
+            score="2.1"
+            codePreview="function calculateTotal(items) { var total = 0; ..."
+            lang="javascript"
+          />
+          <TableRow
+            variant="warning"
+            rank="#2"
+            score="5.4"
+            codePreview="async function fetchUser(id) { return fetch('/api/users/' + id) ..."
+            lang="typescript"
+          />
+          <TableRow
+            variant="good"
+            rank="#3"
+            score="8.7"
+            codePreview="const sum = (a: number, b: number): number => a + b"
+            lang="typescript"
+          />
+        </div>
+      </section>
+
+      {/* ScoreRing */}
+      <section className="flex flex-col gap-8 w-full max-w-2xl">
+        <h2 className="font-mono text-accent-green text-xs font-bold">
+          {'// score_ring'}
+        </h2>
+
+        <div className="flex items-center gap-10">
+          <ScoreRing score={3.5} />
+          <ScoreRing score={6} />
+          <ScoreRing score={9.2} />
+          <ScoreRing score={0} />
         </div>
       </section>
     </main>

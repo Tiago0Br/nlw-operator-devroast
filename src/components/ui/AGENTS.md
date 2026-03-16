@@ -31,6 +31,19 @@ export function Component({ ...props }: ComponentProps) { ... }
 - Definir `defaultVariants` para todos os eixos de variação
 - Para componentes com múltiplas partes internas, usar `slots` do `tailwind-variants`
 
+### Mesclagem de classes sem `tv()`
+- Quando o componente **não usa `tv()`** (ex: componentes baseados em SVG ou elementos sem variantes), usar `twMerge` do `tailwind-merge` para mesclar classes com o `className` externo
+- **Nunca** usar interpolação de string (`\`base-class ${className}\``) — isso não resolve conflitos de classes Tailwind
+
+```tsx
+// Correto
+import { twMerge } from 'tailwind-merge'
+<div className={twMerge('relative inline-flex', className)} />
+
+// Errado
+<div className={`relative inline-flex ${className ?? ''}`} />
+```
+
 ### Comportamento interativo
 - Componentes com estado/comportamento devem usar primitivos do **`@base-ui/react`** (headless)
 - Adicionar diretiva `'use client'` apenas nos componentes que precisam de interatividade no cliente
